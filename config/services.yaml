@@ -29,3 +29,7 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+
+    # Tell Symfony to auto-wire everything that it finds within the AcmeVet namespace
+    AcmeVet\:
+        resource: '../src/AcmeVet/'
