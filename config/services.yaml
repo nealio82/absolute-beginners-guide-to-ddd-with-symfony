@@ -33,3 +33,11 @@ services:
     # Tell Symfony to auto-wire everything that it finds within the AcmeVet namespace
     AcmeVet\:
         resource: '../src/AcmeVet/'
+
+    # We can tell Symfony's messenger component to regard AppointmentBookingHandler
+    # as a handler when command classes are dispatched through the message bus.
+    # When a handler class is able to handle a given command object on the bus,
+    # Symfony will deal with invoking the handler for us.
+    AcmeVet\Scheduling\Application\Command\Booking\AppointmentBookingHandler:
+        tags: [messenger.message_handler]
+
