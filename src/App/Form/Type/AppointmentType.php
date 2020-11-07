@@ -15,7 +15,12 @@ class AppointmentType extends AbstractType
     {
         $builder
             ->add('appointmentTime', DateTimeType::class, [
-                'input' => 'datetime_immutable'
+                'input' => 'datetime_immutable',
+                'widget' => 'single_text',
+                'attr' => [
+                    'step' => 900,
+                    'min' => (new \DateTimeImmutable())->format('Y-m-d')
+                ]
             ])
             ->add('petName', TextType::class)
             ->add('ownerName', TextType::class)

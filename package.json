@@ -1,0 +1,21 @@
+{
+    "devDependencies": {
+        "@symfony/webpack-encore": "^0.31.0",
+        "core-js": "^3.0.0",
+        "regenerator-runtime": "^0.13.2",
+        "sass-loader": "^9.0.1",
+        "webpack-notifier": "^1.6.0"
+    },
+    "license": "UNLICENSED",
+    "private": true,
+    "scripts": {
+        "dev-server": "encore dev-server",
+        "dev": "encore dev",
+        "watch": "encore dev --watch",
+        "build": "encore production --progress"
+    },
+    "dependencies": {
+        "bootstrap": "^4.5.3",
+        "node-sass": "4.14.1"
+    }
+}
