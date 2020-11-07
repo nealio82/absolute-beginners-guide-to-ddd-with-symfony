@@ -40,4 +40,3 @@ services:
     # Symfony will deal with invoking the handler for us.
     AcmeVet\Scheduling\Application\Command\Booking\AppointmentBookingHandler:
         tags: [messenger.message_handler]
-

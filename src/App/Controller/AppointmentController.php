@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use AcmeVet\Scheduling\Application\Command\Booking\AppointmentBookingCommand;
+use AcmeVet\Scheduling\Application\Query\AppointmentQuery;
 use App\Form\Type\AppointmentType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -22,7 +23,7 @@ class AppointmentController extends AbstractController
     /**
      * @Route("/appointments", name="appointments");
      */
-    public function list(Request $request): Response
+    public function list(Request $request, AppointmentQuery $appointmentList): Response
     {
         $form = $this->createForm(AppointmentType::class);
 
@@ -39,7 +40,10 @@ class AppointmentController extends AbstractController
             $this->messageBus->dispatch($command);
         }
 
+        $appointments = $appointmentList->fetchAll();
+
         return $this->render('appointment/list.html.twig', [
+            'appointments' => $appointments,
             'form' => $form->createView()
         ]);
     }

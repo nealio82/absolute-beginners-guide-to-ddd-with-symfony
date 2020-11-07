@@ -1,6 +1,28 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+    <table class="table">
+        <thead class="thead-dark">
+        <tr>
+            <th> Start time</th>
+            <th> Pet name</th>
+            <th> Owner</th>
+            <th> Contact</th>
+            <th> Double booking?</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for appointment in appointments %}
+            <tr>
+                <td>{{ appointment.startTime | date('d m Y \\a\\t H:i') }}</td>
+                <td>{{ appointment.petName }}</td>
+                <td>{{ appointment.ownerName }}</td>
+                <td>{{ appointment.contactNumber }}</td>
+                <td>{% if appointment.isDoubleAppointment %}Yes{% else %}No{% endif %}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
 
     <div class="row">
         <h1>New Appointment</h1>
@@ -8,5 +30,4 @@
     <div class="row">
         {{ form(form) }}
     </div>
-
 {% endblock %}
